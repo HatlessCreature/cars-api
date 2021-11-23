@@ -3,18 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Car;
 
-class DatabaseSeeder extends Seeder
+class CarSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            CarSeeder::class,
-        ]);
+        Car::factory(10)->create();
     }
 }
