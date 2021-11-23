@@ -10,9 +10,16 @@ use App\Http\Requests\UpdateCarRequest;
 
 class CarController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cars = Car::all();
+        $per_page = $request->query('per_page', 8);
+        $brand = $request->query('brand', '');
+        $model = $request->query('model', '');
+
+        $cars = Car::searchByBrand($brand)
+            ->searchByModel($model)
+            ->paginate($per_page);
+
         return response()->json($cars);
     }
 
