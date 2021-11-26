@@ -25,4 +25,9 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+    }
 }
